@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nice Chat</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.3/socket.io.js"></script>
+	<script type="text/javascript">
+	  var socket = io.connect('http://' + document.domain + ':' + location.port);
+	  socket.on('connect', function() {
+	    socket.send('User has connected!');
+	  });
+	  socket.on('message', function(message) {
+	    var messageList = document.getElementById('message-list');
+	    var listItem = document.createElement('li');
+	    listItem.innerText = message;
+	    messageList.appendChild(listItem);
+      messageList.scrollTop = messageList.scrollHeight; // auto-scroll to the bottom
+	  });
+	  socket.on('user_count', function(count) {
+	    var userCount = document.getElementById('user-count');
+	    userCount.innerText = 'Users Online: ' + count;
+	  });
+	  function sendMessage() {
+	    var message = document.getElementById('message').value;
+	    socket.send(message);
+	    document.getElementById('message').value = '';
+	  }
+	</script>
+</head>
+<body>
+	<div id="header">
+    <h1>Nice Chat</h1>
+    <p id="user-count">Users Online: 0</p>
+  </div>
+	<ul id="message-list">
+	  {% for message in messages %}
+	    <li>{{ message['message'] }}</li>
+	  {% endfor %}
+	</ul>
+	<div id="input-container">
+    <input type="text" id="message" placeholder="Type your message...">
+    <button id="send-btn" onclick="sendMessage()">Send</button>
+  </div>
+</body>
+</html>
