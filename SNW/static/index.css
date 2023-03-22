@@ -1,0 +1,78 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+#user-count {
+  text-align: center;
+  position: fixed;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+#message-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 80px 0 50px 0;
+  overflow-y: scroll;
+  height: calc(100vh - 130px);
+}
+
+#message-list li {
+  margin-bottom: 5px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+#message {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  width: 90%;
+  max-width: 500px;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+}
+
+#send-btn {
+  position: fixed;
+  bottom: 10px;
+  right: calc(30% + 10px);
+  padding: 10px 20px;
+  border: none;
+  background-color: #1e90ff;
+  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#send-btn:hover {
+  background-color: #0066cc;
+}
